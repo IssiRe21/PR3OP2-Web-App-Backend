@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="/fox.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notificaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mensajes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="center">
+        <h2>
+            <%= post.username %>:
+        </h2>
+        <br>
+        <h2>
+            <%= post.content %>
+        </h2>
+        <hr>
+        
+
+        <h5>Comentarios:</h5>
+        <% comments.forEach((comment)=> { %>
+            <div>
+                <%= comment.name %>:
+                    <br>
+                    <%= comment.comment %>
+                    <br><br>
+            </div>
+            
+            <% }); %>
+            <hr>
+                
+
+                <h5>Añadir un comentario</h5>
+                <form action="/comments/create" method="POST">
+                    <input type="hidden" name="postId" value="<%= post.id %>">
+                    <div>
+                        <label for="name">Usuario:</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="comment">Comentario:</label>
+                        <input type="text" id="comment" name="comment">
+                    </div>
+                    <br>
+                    <button>agregar comentario</button>
+                </form>
+                <br>
+
+                <a href="/">&lt;-- Volver</a>
+    </div>
+
+
+
+    <br>
+    <footer class="center">
+        <small>Fox logo made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></small>
+    </footer>
+</body>
+
+</html>
